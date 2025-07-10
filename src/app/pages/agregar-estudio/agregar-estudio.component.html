@@ -1,0 +1,78 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow border-0">
+        <div class="card-header bg-success text-light text-center">
+          <h4 class="mb-0">Agregar Estudio</h4>
+        </div>
+
+        <div class="card-body">
+          <form [formGroup]="estudioForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="titulo" class="form-label">Título</label>
+              <input type="text" class="form-control" formControlName="titulo" />
+              @if(enviado && myForm['titulo'].errors?.['required']) {
+                <div class="text-danger small mt-1">Este campo es obligatorio.</div>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="area" class="form-label">Área</label>
+              <select class="form-select" formControlName="area" (change)="actualizarArea($event)">
+                <option value="">Selecciona un área...</option>
+                @for(area of estudioArea; track area) {
+                  <option value="{{ area }}">{{ area }}</option>
+                }
+              </select>
+              @if(enviado && myForm['area'].errors?.['required']) {
+                <div class="text-danger small mt-1">Selecciona un área válida.</div>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="ano" class="form-label">Año</label>
+              <input type="number" class="form-control" formControlName="ano" />
+              @if(enviado && myForm['ano'].errors?.['required']) {
+                <div class="text-danger small mt-1">El año es obligatorio.</div>
+              }
+              @if(enviado && myForm['ano'].errors?.['pattern']) {
+                <div class="text-danger small mt-1">Año inválido.</div>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="universidad" class="form-label">Universidad</label>
+              <input type="text" class="form-control" formControlName="universidad" />
+              @if(enviado && myForm['universidad'].errors?.['required']) {
+                <div class="text-danger small mt-1">Campo obligatorio.</div>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="aplicacion" class="form-label">Aplicación</label>
+              <input type="text" class="form-control" formControlName="aplicacion" />
+              @if(enviado && myForm['aplicacion'].errors?.['required']) {
+                <div class="text-danger small mt-1">Este campo es obligatorio.</div>
+              }
+            </div>
+
+            <div class="mb-4">
+              <label for="resumen" class="form-label">Resumen</label>
+              <textarea rows="4" class="form-control" formControlName="resumen"></textarea>
+              @if(enviado && myForm['resumen'].errors?.['required']) {
+                <div class="text-danger small mt-1">Este campo es obligatorio.</div>
+              }
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-success btn-lg">
+                <i class="bi bi-plus-circle"></i> Agregar Estudio
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
