@@ -8,8 +8,9 @@
 
         <div class="card-body">
           <form [formGroup]="estudioForm" (ngSubmit)="onSubmit()">
+
             <div class="mb-3">
-              <label for="titulo" class="form-label">Título</label>
+              <label class="form-label">Título</label>
               <input type="text" class="form-control" formControlName="titulo" />
               @if(enviado && myForm['titulo'].errors?.['required']) {
                 <div class="text-danger small mt-1">Este campo es obligatorio.</div>
@@ -17,11 +18,11 @@
             </div>
 
             <div class="mb-3">
-              <label for="area" class="form-label">Área</label>
+              <label class="form-label">Área</label>
               <select class="form-select" formControlName="area" (change)="actualizarArea($event)">
                 <option value="">Selecciona un área...</option>
                 @for(area of estudioArea; track area) {
-                  <option value="{{ area }}">{{ area }}</option>
+                  <option [value]="area">{{ area }}</option>
                 }
               </select>
               @if(enviado && myForm['area'].errors?.['required']) {
@@ -30,7 +31,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="ano" class="form-label">Año</label>
+              <label class="form-label">Año</label>
               <input type="number" class="form-control" formControlName="ano" />
               @if(enviado && myForm['ano'].errors?.['required']) {
                 <div class="text-danger small mt-1">El año es obligatorio.</div>
@@ -41,7 +42,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="universidad" class="form-label">Universidad</label>
+              <label class="form-label">Universidad</label>
               <input type="text" class="form-control" formControlName="universidad" />
               @if(enviado && myForm['universidad'].errors?.['required']) {
                 <div class="text-danger small mt-1">Campo obligatorio.</div>
@@ -49,7 +50,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="aplicacion" class="form-label">Aplicación</label>
+              <label class="form-label">Aplicación</label>
               <input type="text" class="form-control" formControlName="aplicacion" />
               @if(enviado && myForm['aplicacion'].errors?.['required']) {
                 <div class="text-danger small mt-1">Este campo es obligatorio.</div>
@@ -57,7 +58,7 @@
             </div>
 
             <div class="mb-4">
-              <label for="resumen" class="form-label">Resumen</label>
+              <label class="form-label">Resumen</label>
               <textarea rows="4" class="form-control" formControlName="resumen"></textarea>
               @if(enviado && myForm['resumen'].errors?.['required']) {
                 <div class="text-danger small mt-1">Este campo es obligatorio.</div>
